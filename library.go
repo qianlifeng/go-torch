@@ -20,7 +20,7 @@
 
 // Package main is the entry point of go-torch, a stochastic flame graph
 // profiler for Go programs.
-package main
+package gotorch
 
 import (
 	"fmt"
@@ -55,14 +55,7 @@ type outputOptions struct {
 	Inverted          bool   `long:"inverted" description:"icicle graph"`
 }
 
-// main is the entry point of the application
-func main() {
-	if err := runWithArgs(os.Args[1:]...); err != nil {
-		torchlog.Fatalf("Failed: %v", err)
-	}
-}
-
-func runWithArgs(args ...string) error {
+func RunWithArgs(args ...string) error {
 	opts := &options{}
 
 	parser := gflags.NewParser(opts, gflags.Default|gflags.IgnoreUnknown)
